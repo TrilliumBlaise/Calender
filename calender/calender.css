@@ -1,140 +1,131 @@
-* { 
-   padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 16px;
 }
 
 body {
-    height: 100vh;
-    width: 100vw;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  color: snow;
+}
+
+.calender-container {
+  height: 100%;
+  width: 100%;
 }
 
 .todays-date {
-    width: 100%;
-    height: 9%;
-    background-color: darkblue;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 1.75em;
+  width: 100%;
+  height: 10%;
+  background-color: darkblue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .today {
-    margin-left: 2%;
-    cursor: pointer;
+  font-size: 1.75em;
 }
 
-.month-year-selector {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2.5em;
-    width: 100%;
-    height: 8%;
-}
-
-.month-year {
-    display: flex;
-    justify-content: center;
-    cursor: pointer;
-}
-
-.month-year:active {
-    background-color: rgba(128, 128, 128, 0.377);
-}
-
-.month {
-    margin-right: 2%;
-}
-
-.right-arrow {
-    position: absolute;
-    right: 1%;
-    min-width: 25px;
-    min-height: 25px;
-    border: none;
-    background: none;
-    background-image: url('../../assets/images/black-arrow.png');
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    cursor: pointer;
-    transform: rotate(-90deg);
-}
-
-.left-arrow {
-    position: absolute;
-    left: 1%;
-    min-width: 25px;
-    min-height: 25px;
-    border: none;
-    background: none;
-    background-image: url('../../assets/images/black-arrow.png');
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    cursor: pointer;
-    transform: rotate(90deg);
+button {
+  background: none;
+  background-size: 100% 100%;
+  border: none;
+  width: 25px;
+  height: 25px;
 }
 
 .open-close {
-    margin-right: 3%;
-    min-width: 25px;
-    min-height: 25px;
-    border: none;
-    background: none;
-    background-image: url('../../assets/images/arrow.png');
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    cursor: pointer;
-}
-
-.select-date input{
-    position: absolute;
-    left: 16%;
-    top: 10%;
-    font-size: 2em;
-    z-index: 100;
+  background-image: url('../images/arrow.png');
 }
 
 .flip {
-    transform: rotate(180deg);
+  transform: scaleY(-1);
 }
 
-.days-of-week,
-.dates {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
+.calender {
+  height: 90%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.month-year-selector {
+  display: flex;
+  height: 10%;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 1.5em;
+  margin-bottom: 5px;
+}
+
+.select-date {
+  position: fixed;
+  top: 20%;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+}
+
+.select-date input {
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  font-size: 1.5em;
 }
 
 .days-of-week {
-    width: 100%;
-    height: 3%;
-    text-align: center;
-    text-justify: center;
-    font-size: 1.25em;
-    margin-top: 2%;
-    cursor: default;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  height: 7%;
+  font-size: 1.25em;
 }
 
 .dates {
-    width: 100%;
-    height: 85%;
-    margin-top: 3%;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  height: 83%;
 }
 
+.day,
 .date {
-    display: flex;
-    max-height: 150px;
-    max-width: 150px;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-size: 2.5em;
-    cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.date {
+  font-size: 2em;
+}
+.month-year {
+  font-size: 1.75em;
 }
 
-.selected-day {
-    border: 10px ridge blue;
+.left-arrow {
+  background-image: url('../images/black-arrow.png');
+  transform: rotate(90deg);
+}
+
+.right-arrow {
+  background-image: url('../images/black-arrow.png');
+  transform: rotate(-90deg);
+}
+.minimize {
+  display: none;
+}
+
+@media only screen and (min-width: 951px) {
+  * {
+    font-size: 32px;
+  }
+  button {
+    height: 50px;
+    width: 50px;
+  }
 }
