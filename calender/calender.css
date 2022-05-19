@@ -38,6 +38,7 @@ button {
   border: none;
   width: 25px;
   height: 25px;
+  cursor: pointer;
 }
 
 .open-close {
@@ -100,11 +101,23 @@ button {
   justify-content: center;
   align-items: center;
 }
+
+.day {
+  font-size: 1.1em;
+}
 .date {
   font-size: 2em;
+  cursor: pointer;
+}
+
+.date:hover {
+  border: 5px outset grey;
 }
 .month-year {
-  font-size: 1.75em;
+  font-size: 1.5em;
+  border: 5px outset grey;
+  background-color: rgb(202, 202, 202);
+  cursor: pointer;
 }
 
 .left-arrow {
@@ -118,6 +131,29 @@ button {
 }
 .minimize {
   display: none;
+}
+
+.selected-day {
+  border: 5px outset grey;
+  background-color: rgba(0, 0, 139, 0.5);
+}
+
+@media only screen and (min-width: 451px) {
+  .todays-date {
+    height: 15%;
+  }
+
+  .calender {
+    height: 85%;
+  }
+
+  .month-year-selector {
+    height: 20%;
+  }
+
+  .select-date {
+    top: 31%;
+  }
 }
 
 @media only screen and (min-width: 951px) {
