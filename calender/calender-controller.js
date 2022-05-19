@@ -13,9 +13,9 @@ let arrayOfDates = new Array(42);
 //Loads the current date into the calender and sets out the days.
 document.addEventListener('DOMContentLoaded', () => {
   todayElement.innerHTML = `${setMonthName(date.getMonth())} ${date.getDate()}, ${date.getFullYear()}`;
-  arrayOfDateElements[date.getDate() + 1].style.backgroundColor = 'rgb(0,0,139,0.5)';
+  arrayOfDateElements[date.getDate() + 1].classList.toggle('selected-day');
   monthYearElement.innerText = `${setMonthName(month)} - ${year}`;
-
+  selectedDay = date;
   fillDaysOfMonth(date);
 });
 
@@ -43,8 +43,7 @@ document.querySelector('.left-arrow').addEventListener('click', () => {
   if (date.getMonth() === currentDate.getMonth() && date.getFullYear() === currentDate.getFullYear()) {
     arrayOfDateElements[currentDate.getDate() + 1].style.backgroundColor = 'rgb(0,0,139,0.5)';
   }
-  monthElement.innerHTML = setMonthName(date.getMonth());
-  yearElement.innerHTML = date.getFullYear();
+  monthYearElement.innerHTML = `${setMonthName(date.getMonth())} - ${date.getFullYear()}`;
   fillDaysOfMonth(date);
 });
 
@@ -64,18 +63,18 @@ document.querySelector('.right-arrow').addEventListener('click', () => {
   if (date.getMonth() === currentDate.getMonth() && date.getFullYear() === currentDate.getFullYear()) {
     arrayOfDateElements[currentDate.getDate() + 1].style.backgroundColor = 'rgb(0,0,139,0.5)';
   }
-  monthElement.innerHTML = setMonthName(date.getMonth());
-  yearElement.innerHTML = date.getFullYear();
+  monthYearElement.innerHTML = `${setMonthName(date.getMonth())} - ${date.getFullYear()}`;
   fillDaysOfMonth(date);
 });
 
 //Allows the user to select a date
 document.querySelector('.month-year').addEventListener('click', () => {
-  document.querySelector('.select-date').classList.remove('minimize');
+  const selectDate = document.querySelector('.select-date');
+  selectDate.classList.toggle('minimize');
   document.querySelector('#select-date').focus();
 });
 
-document.querySelector('#select-date').addEventListener('blur', () => {
+document.querySelector('#select-date').addEventListener('blur', e => {
   document.querySelector('.select-date').classList.add('minimize');
 });
 
@@ -96,8 +95,7 @@ document.querySelector('.select-date').addEventListener('change', () => {
     arrayOfDateElements[currentDate.getDate() + 1].style.backgroundColor = 'rgb(0,0,139,0.5)';
   }
   document.querySelector('.select-date').classList.add('minimize');
-  monthElement.innerHTML = setMonthName(month - 1);
-  yearElement.innerHTML = year;
+  monthYearElement.innerHTML = `${setMonthName(date.getMonth())} - ${date.getFullYear()}`;
   selectsDay(day);
 });
 
@@ -194,7 +192,6 @@ function fillDaysOfMonth(date) {
   for (let i = 0; i < arrayOfDates.length; i++) {
     if (newDate.getMonth() === arrayOfDates[i].getMonth()) {
       arrayOfDateElements[i].innerHTML = arrayOfDates[i].getDate();
-      arrayOfDateElements[i].style.color = 'black';
     }
     if (newDate.getMonth() != arrayOfDates[i].getMonth()) {
       arrayOfDateElements[i].innerHTML = arrayOfDates[i].getDate();
